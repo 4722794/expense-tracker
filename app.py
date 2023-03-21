@@ -1,8 +1,8 @@
 import os
-import json
-import requests
-import copy
-import calendar
+# import json
+# import requests
+# import copy
+# import calendar
 import tendie_dashboard
 import tendie_expenses
 import tendie_budgets
@@ -26,7 +26,8 @@ from helpers import apology, login_required, usd
 app = Flask(__name__)
 
 # Set app key
-app.secret_key = os.getenv("SECRET_KEY")
+# app.secret_key = os.getenv("SECRET_KEY")
+app.secret_key = "hargun"
 
 # Ensure templates are auto-reloaded
 app.config["TEMPLATES_AUTO_RELOAD"] = True
@@ -232,7 +233,7 @@ def index():
         expenses = tendie_expenses.addExpenses(formData, session["user_id"])
 
         # Redirect to results page and render a summary of the submitted expenses
-        return render_template("expensed.html", results=expenses)
+        return redirect("/")
 
 
 @app.route("/expenses", methods=["GET"])
@@ -894,3 +895,6 @@ def errorhandler(e):
 # Listen for errors
 for code in default_exceptions:
     app.errorhandler(code)(errorhandler)
+
+if __name__ == "__main__":
+    app.run(host='0.0.0.0', port=5001)

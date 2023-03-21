@@ -17,9 +17,10 @@ from datetime import datetime
 engine = create_engine(os.getenv("DATABASE_URL"))
 db = scoped_session(sessionmaker(bind=engine))
 
-
 # Generates data needed for the budget report by looping through each budget and adding expense history where categories match between budgets and expenses
 # TODO: This data/reporting becomes less beneficial when users have multiple budgets that have the same categories checked because 1 expense with 'Category A' will be associated with for example 3 budgets that have 'Category A' checked
+
+
 def generateBudgetsReport(userID, year=None):
     # Create data structure to hold users category spending data
     budgetsReport = []

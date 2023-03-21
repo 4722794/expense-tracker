@@ -38,8 +38,13 @@ def login_required(f):
 
 def usd(value):
     """Format value as USD."""
-    return f"${value:,.2f}"
+    # return f"{value:,.2f}"
+    return f"Rs.{formatINR(value)}"
 
+def formatINR(number):
+    s, *d = str(number).partition(".")
+    r = ",".join([s[x-2:x] for x in range(-3, -len(s), -2)][::-1] + [s[-3:]])
+    return "".join([r] + d)
 
 # Converts a list of SQL Alchemy RowProxy objects into a list of dictionary objects with the column name as the key (https://github.com/cs50/python-cs50/blob/develop/src/cs50/sql.py#L328)
 # Used for SQL SELECT .fetchall() results

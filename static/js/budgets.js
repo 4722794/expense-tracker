@@ -65,8 +65,8 @@ function calculateEstimates() {
     let budget = document.getElementById("amount").value;
     const weekly = (budget / 52)
     const monthly = (budget / 12)
-    document.getElementById("weekly").innerHTML = "Weekly amount: " + new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(weekly);
-    document.getElementById("monthly").innerHTML = "Monthly amount: " + new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(monthly);
+    document.getElementById("weekly").innerHTML = "Weekly amount: " + new Intl.NumberFormat('en-US', { style: 'currency', currency: 'INR' }).format(weekly);
+    document.getElementById("monthly").innerHTML = "Monthly amount: " + new Intl.NumberFormat('en-US', { style: 'currency', currency: 'INR' }).format(monthly);
 
     // Get all of the checked categories and update their estimates
     let checkedCategories = getAllCheckedCategories()
@@ -146,7 +146,7 @@ function getAllCheckedCategories() {
     }
 }
 
-// Calculates the dollar amount of a spend category based on the users input of percentage, then displays the output to the user
+// Calculates the rupee amount of a spend category based on the users input of percentage, then displays the output to the user
 function calculateCategories(percentInput) {
     let categoryBudget = document.getElementById("amount").value;
     const categoryWeekly = (categoryBudget / 52);
@@ -156,7 +156,7 @@ function calculateCategories(percentInput) {
     // Only calculate the amount if user enters a percent value of 1-100
     if (percentInput.value > 0 && percentInput.value <= 100) {
         // Show the calculations to the user
-        categoryLabel.innerHTML = "Total amount: " + new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(categoryBudget * (percentInput.value / 100)) + "<br>Weekly amount: " + new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(categoryWeekly * (percentInput.value / 100)) + "<br>Monthly amount: " + new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(categoryMonthly * (percentInput.value / 100));
+        categoryLabel.innerHTML = "Total amount: " + new Intl.NumberFormat('en-US', { style: 'currency', currency: 'INR' }).format(categoryBudget * (percentInput.value / 100)) + "<br>Weekly amount: " + new Intl.NumberFormat('en-US', { style: 'currency', currency: 'INR' }).format(categoryWeekly * (percentInput.value / 100)) + "<br>Monthly amount: " + new Intl.NumberFormat('en-US', { style: 'currency', currency: 'INR' }).format(categoryMonthly * (percentInput.value / 100));
         document.getElementById("btnSaveBudget").disabled = false;
     }
     // Display error message

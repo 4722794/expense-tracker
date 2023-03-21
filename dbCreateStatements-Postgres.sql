@@ -10,6 +10,7 @@ CREATE TABLE IF NOT EXISTS users (
 CREATE TABLE IF NOT EXISTS budgets (
 	id	serial PRIMARY KEY,
 	name	TEXT NOT NULL,
+	year INTEGER NOT NULL,
 	amount	REAL,
 	user_id	INTEGER NOT NULL,
 	CONSTRAINT budgets_user_id_fkey FOREIGN KEY (user_id)

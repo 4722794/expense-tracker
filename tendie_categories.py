@@ -11,7 +11,10 @@ engine = create_engine(os.getenv("DATABASE_URL"))
 db = scoped_session(sessionmaker(bind=engine))
 
 
+
 # Gets and return the users spend categories
+
+
 def getSpendCategories(userID):
     results = db.execute(
         "SELECT categories.name FROM usercategories INNER JOIN categories ON usercategories.category_id = categories.id WHERE usercategories.user_id = :usersID",

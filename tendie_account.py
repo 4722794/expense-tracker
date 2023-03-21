@@ -11,8 +11,9 @@ from helpers import convertSQLToDict
 engine = create_engine(os.getenv("DATABASE_URL"))
 db = scoped_session(sessionmaker(bind=engine))
 
-
 # Get the users account name
+
+
 def getUsername(userID):
     name = db.execute(
         "SELECT username FROM users WHERE id = :usersID", {"usersID": userID}).fetchone()[0]

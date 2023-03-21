@@ -13,8 +13,9 @@ from helpers import convertSQLToDict
 engine = create_engine(os.getenv("DATABASE_URL"))
 db = scoped_session(sessionmaker(bind=engine))
 
-
 # Get the users budgets
+
+
 def getBudgets(userID):
     results = db.execute(
         "SELECT id, name, year, amount FROM budgets WHERE user_id = :usersID ORDER BY name ASC", {"usersID": userID}).fetchall()

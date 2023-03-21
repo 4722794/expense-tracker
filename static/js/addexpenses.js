@@ -29,7 +29,7 @@ function addRow() {
     }
 
     // Complete the HTML string for the new row
-    newRow += "</select></td><td><input type='text' class='form-control-sm' name='amount.' form='expenseForm' size='10' placeholder='$' maxlength='10' required pattern='(?=.*?\\d)^(([1-9]\\d{0,2}(\\d{3})*)|\\d+)?(\\.\\d{1,2})?$' title='Format must be currency value without dollar sign or commas e.g. 1, 2.50, 1500.75'></td></tr>"
+    newRow += "</select></td><td><input type='text' class='form-control-sm' name='amount.' form='expenseForm' size='10' placeholder='Rs.' maxlength='10' required pattern='(?=.*?\\d)^(([1-9]\\d{0,2}(\\d{3})*)|\\d+)?(\\.\\d{1,2})?$' title='Format must be currency value without rupee sign or commas e.g. 1, 2.50, 1500.75'></td></tr>"
 
     // Append the table by adding a new row to it with the constructed HTML string
     $("#expenseTable tbody").append(newRow);

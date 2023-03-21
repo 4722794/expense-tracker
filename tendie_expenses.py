@@ -12,9 +12,10 @@ from helpers import convertSQLToDict
 engine = create_engine(os.getenv("DATABASE_URL"))
 db = scoped_session(sessionmaker(bind=engine))
 
-
 # Add expense(s) to the users expense records
 # There are two entry points for this: 1) 'addexpenses' route and 2) 'index' route. #1 allows many expenses whereas #2 only allows 1 expense per POST.
+
+
 def addExpenses(formData, userID):
     expenses = []
     expense = {"description": None, "category": None,
@@ -82,9 +83,9 @@ def getExpense(formData, userID):
     expense["payer"] = formData.get("oldPayer").strip()
     expense["submitTime"] = formData.get("submitTime").strip()
 
-    # Remove dollar sign and comma from the old expense so we can convert to float for the DB
+    # Remove rupee sign and comma from the old expense so we can convert to float for the DB
     expense["amount"] = float(
-        expense["amount"].replace("$", "").replace(",", ""))
+        expense["amount"].replace("Rs.", "").replace(",", ""))
 
     # Query the DB for the expense unique identifier
     expenseID = db.execute("SELECT id FROM expenses WHERE user_id = :usersID AND description = :oldDescription AND category = :oldCategory AND expenseDate = :oldDate AND amount = :oldAmount AND payer = :oldPayer AND submitTime = :oldSubmitTime",

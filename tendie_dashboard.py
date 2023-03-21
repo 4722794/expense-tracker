@@ -13,8 +13,9 @@ from datetime import datetime
 engine = create_engine(os.getenv("DATABASE_URL"))
 db = scoped_session(sessionmaker(bind=engine))
 
-
 # Get and return the users total spend for the current calendar year
+
+
 def getTotalSpend_Year(userID):
     results = db.execute(
         "SELECT SUM(amount) AS expenses_year FROM expenses WHERE user_id = :usersID AND date_part('year', date(expensedate)) = date_part('year', CURRENT_DATE)",
